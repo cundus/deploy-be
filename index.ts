@@ -63,4 +63,13 @@ app.post(
    }
 );
 
+app.get("/users", async (req, res) => {
+   const users = await client.user.findMany({
+      orderBy: {
+         id: "desc",
+      },
+   });
+   res.send(users);
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
